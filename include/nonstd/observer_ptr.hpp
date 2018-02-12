@@ -398,6 +398,28 @@ bool operator!=( observer_ptr<W1> p1, observer_ptr<W2> p2 )
     return !( p1 == p2 );
 }
 
+// casts
+template< class W1, class W2 >
+observer_ptr<W1> static_observer_cast(const nonstd::observer_ptr<W2>& other)
+{
+    const auto rawptr = static_cast<W1*>(other.get());
+    return make_observer<W1>(rawptr);
+}
+
+template< class W1, class W2 >
+observer_ptr<W1> dynamic_observer_cast(const nonstd::observer_ptr<W2>& other)
+{
+    const auto rawptr = dynamic_cast<W1*>(other.get());
+    return make_observer<W1>(rawptr);
+}
+
+template< class W1, class W2 >
+observer_ptr<W1> const_observer_cast(const nonstd::observer_ptr<W2>& other)
+{
+    const auto rawptr = const_cast<W1*>(other.get());
+    return make_observer<W1>(rawptr);
+}
+
 #if nsop_HAVE_NULLPTR
 
 template< class W >
