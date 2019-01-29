@@ -7,6 +7,13 @@
 
 cmake_minimum_required( VERSION 3.5 FATAL_ERROR )
 
+###############
+# ASI default settings
+list(APPEND CMAKE_MODULE_PATH "$ENV{ASV_CMAKE}")
+include(asv_cmake_defaults)
+asv_cmake_defaults( )
+###############
+
 # observer-ptr project and version, updated by script/update-version.py:
 
 project(
@@ -35,7 +42,7 @@ endif()
 
 # If toplevel project, enable building and performing of tests, disable building of examples:
 
-option( NSOP_OPT_BUILD_TESTS    "Build and perform observer_ptr tests" ${observer_ptr_IS_TOPLEVEL_PROJECT} )
+option( NSOP_OPT_BUILD_TESTS    "Build and perform observer_ptr tests" OFF} )
 option( NSOP_OPT_BUILD_EXAMPLES "Build observer_ptr examples" OFF )
 
 option( NSOP_OPT_SELECT_STD      "Select std::experimental::observer_ptr" OFF )
