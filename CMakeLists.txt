@@ -7,13 +7,6 @@
 
 cmake_minimum_required( VERSION 3.5 FATAL_ERROR )
 
-###############
-# ASI default settings
-list(APPEND CMAKE_MODULE_PATH "$ENV{ASV_CMAKE}")
-include(asv_cmake_defaults)
-asv_cmake_defaults( )
-###############
-
 # observer-ptr project and version, updated by script/update-version.py:
 
 project(
@@ -22,6 +15,13 @@ project(
 #   DESCRIPTION "A C++17-like observer_ptr for C++98 and later in a single-file header-only library"
 #   HOMEPAGE_URL "https://github.com/martinmoene/observer-ptr"
     LANGUAGES CXX )
+
+###############
+# ASI default settings
+list(APPEND CMAKE_MODULE_PATH "$ENV{ASV_CMAKE}")
+include(asv_cmake_defaults)
+asv_cmake_defaults( )
+###############
 
 # Package information:
 
